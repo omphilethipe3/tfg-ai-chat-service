@@ -1,11 +1,11 @@
-import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from typing import Optional
 from src.config.settings import settings
 from src.ai_agent.agent import chat_with_openai, chat_with_fastmcp
 
 class ChatRequest(BaseModel):
-    message: str
+    message: Optional[str] = None
     provider: str = "fastmcp"  
 
 class ChatResponse(BaseModel):
